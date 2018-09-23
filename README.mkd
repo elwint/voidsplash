@@ -1,4 +1,4 @@
-#`voidsplash`: simple animated boot splash for runit
+# `voidsplash`: simple animated boot splash for runit
 
 `voidsplash` provides a simple animated splash screen. Designed with
 [voidlinux](http://voidlinux.eu/) in mind, voidsplash should work anywhere runit
@@ -8,7 +8,7 @@ is used as PID 1 and with minimal modification with any other init system.
 `voidsplash` displays invidual images on a framebuffer device during the boot
 process.
 
-##Dependencies
+## Dependencies
 
 `voidsplash` requires a POSIX compatible shell (tested with `dash`), a working
 framebuffer device and `fbv` (an image viewer for the framebuffer). 
@@ -25,7 +25,7 @@ on compile time options)
 
 Press `q` to exit `fbv`.
 
-##Installation
+## Installation
 
 Copy `voidsplash` to `/bin` (alternatively, `voidsplash` can be installed
 anywhere but should be on the root partition so that it can be accessed before
@@ -40,7 +40,7 @@ beginning of `/etc/runit/1`:
 Create the directory `/etc/voidsplash/`. This will contain the frames to display
 while the system is booting.
 
-##Configuration
+## Configuration
 
 voidsplash can be configured by means of shell variables inside
 `voidsplash`. Current options are:
@@ -48,8 +48,8 @@ voidsplash can be configured by means of shell variables inside
 - `SPEED` sets the time, in seconds, to show each frame. This is an argument to
   `sleep`---fractional values may be used
 
-- `TARGETSV` is the name of a runit service that voidsplash waits for. Once this
-  service is running, voidsplash will exit. **If this service does not exist or
+- `TARGET` is the name of a process that voidsplash waits for. Once this
+  process is running, voidsplash will exit. **If this process does not exist or
   is not started at boot, voidsplash will never exit**. If you wish to use
   voidsplash without runit, you will need to modify the program to ensure it
   exits.
@@ -66,14 +66,3 @@ individual frames:
     $ convert void.gif -coalesce void.png
 
 will create `void-0.png void-1.png …` with individual frames from `void.gif`.
-
-##Hiding boot messages
-
-Boot messages will get garbled up with `voidsplash`. This can be fixed by
-sending these messages to a different virtual console. Add to boot options:
-
-    console=tty2
-
-To send the boot messages to the second virtual console (if using grub, add to
-`GRUB_CMDLINE_LINUX_DEFAULT` in `/etc/default/grub` then run `grub-mkconfig -o
-/boot/grub/grub.cfg`).
