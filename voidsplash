@@ -25,7 +25,7 @@
 
 #SPEED: Number of seconds to show each frame
 #TARGET: Process that will end the bootsplash when started successfully
-SPEED=0.1
+SPEED=0.03
 TARGET=i3lock
 
 #builtin echo in dash does not support espace sequence, but external does
