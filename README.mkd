@@ -37,6 +37,8 @@ beginning of `/etc/runit/1`:
     #!/bin/sh
     /bin/voidsplash
 
+It can also run on shutdown by executing it in the beginning of `/etc/runit/3`.
+
 Create the directory `/etc/voidsplash/`. This will contain the frames to display
 while the system is booting.
 

@@ -30,7 +30,7 @@ TARGET=i3lock
 
 #builtin echo in dash does not support espace sequence, but external does
 /bin/echo -n -e '\033c\e[?25l' > /dev/tty8
-chvt 8
+chvt 8 &
 
 parrot () {
     while true
