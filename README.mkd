@@ -52,9 +52,9 @@ voidsplash can be configured by means of shell variables inside
 
 - `TARGET` is the name of a process that voidsplash waits for. Once this
   process is running, voidsplash will exit. **If this process does not exist or
-  is not started at boot, voidsplash will never exit**. If you wish to use
-  voidsplash without runit, you will need to modify the program to ensure it
-  exits.
+  is not started at boot, voidsplash will only exit after timeout**.
+
+- `TIMEOUT` is the timeout in seconds.
 
 Place individual frames in `/etc/voidsplash`. It is recommended that files are
 named sequentially (for example, void-0.png void-1.png void-2.png …). `fbv` will

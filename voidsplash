@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # Copyright (c) 2017 J Aylesworth <mail@jeffrey.red>
 # All rights reserved.
 #
@@ -25,8 +25,10 @@
 
 #SPEED: Number of seconds to show each frame
 #TARGET: Process that will end the bootsplash when started successfully
+#TIMEOUT: Timeout in seconds if target does not launch
 SPEED=0.03
 TARGET=i3lock
+TIMEOUT=10
 
 #builtin echo in dash does not support espace sequence, but external does
 /bin/echo -n -e '\033c\e[?25l' > /dev/tty8
@@ -45,8 +47,8 @@ parrot /etc/voidsplash/* | while read img
 do
     { sleep $SPEED ; echo 'q' ;} | fbv -cike "$img"
 
-    if pgrep -x "$TARGET" > /dev/null
-    then exit 0
+    if [ $SECONDS -ge $TIMEOUT ] || pgrep -x "$TARGET" > /dev/null; then
+        exit 0
     fi
 done
 }
