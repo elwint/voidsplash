@@ -27,6 +27,13 @@ Press `q` to exit `fbv`.
 
 ## Installation
 
+### Automatic
+
+Run the installation script `install.sh`. If the boot animation disappears after
+an update, execute `autofix.sh` to enable it again.
+
+### Manual
+
 Copy `voidsplash` to `/bin` (alternatively, `voidsplash` can be installed
 anywhere but should be on the root partition so that it can be accessed before
 disks are mounted). Make sure that it is executable.
